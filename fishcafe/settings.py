@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'kitchen',
     'store',
     'finance',
+    'otherPackages',
     
     # 3rd apps
     'rest_framework',

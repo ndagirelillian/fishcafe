@@ -1,65 +1,50 @@
 from django import forms
-from .models import Revenue, Expense, Asset, Liability, Cost_of_sales
-
-
-class Cost_of_SalesForm(forms.ModelForm):
-    class Meta:
-        model = Cost_of_sales
-        fields = ['name', 'category', 'amount', 'description', 'drawn', 'date']
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-select'}),
-            'category': forms.Select(attrs={'class': 'form-select'}),
-            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 2}),
-            'amount': forms.NumberInput(attrs={'class': 'form-control'}),
-            'drawn': forms.TextInput(attrs={'class': 'form-control'}),
-            'date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-        }
-
+from .models import Revenue, Expense, Asset, Liability
 
 class RevenueForm(forms.ModelForm):
     class Meta:
         model = Revenue
-        fields = ['category', 'description', 'amount', 'received_from', 'date']
+        fields = ['category', 'description', 'amount', 'received_from', 'date', 'attachment']
         widgets = {
             'category': forms.Select(attrs={'class': 'form-select'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 2}),
             'amount': forms.NumberInput(attrs={'class': 'form-control'}),
             'received_from': forms.TextInput(attrs={'class': 'form-control'}),
             'date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'attachment': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
-
 
 class ExpenseForm(forms.ModelForm):
     class Meta:
         model = Expense
-        fields = ['category', 'description', 'amount', 'date', 'drawn_by']
+        fields = ['category', 'description', 'amount', 'date', 'attachment']
         widgets = {
             'category': forms.Select(attrs={'class': 'form-select'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 2}),
             'amount': forms.NumberInput(attrs={'class': 'form-control'}),
             'date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'drawn_by': forms.TextInput(attrs={'class': 'form-control'}),
+            'attachment': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
-
 
 class AssetForm(forms.ModelForm):
     class Meta:
         model = Asset
-        fields = ['name', 'location', 'value', 'date_acquired']
+        fields = ['name', 'value', 'purchase_date', 'attachment'] 
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'location': forms.TextInput(attrs={'class': 'form-control'}),
             'value': forms.NumberInput(attrs={'class': 'form-control'}),
-            'date_acquired': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'purchase_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}), 
+            'attachment': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
-
 
 class LiabilityForm(forms.ModelForm):
     class Meta:
         model = Liability
-        fields = ['name', 'amount', 'due_date']
+        fields = ['description', 'amount', 'due_date', 'attachment']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 2}),
             'amount': forms.NumberInput(attrs={'class': 'form-control'}),
             'due_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'attachment': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }

@@ -49,6 +49,7 @@ urlpatterns = [
     path('add/category/', views.category, name = 'add-category'),
     path('add/menu/', views.add_menu, name='menu'),
     path("search-menu-items/", views.search_menu_items, name="search_menu_items"),
+    
   
 
 ]
